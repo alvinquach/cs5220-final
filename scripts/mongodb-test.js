@@ -113,7 +113,7 @@ db.units.insertMany([unit1, unit2]);
 // create tickets
 
 ticket1 = {
-  createdBy: user._id,
+  createdBy: user.id,
   createdForName: user.firstName + ' ' + user.lastName,
   createdForEmail: user.email,
   subject: 'Projector Malfunction',
@@ -127,7 +127,7 @@ ticket1 = {
 };
 
 ticket2 = {
-  createdBy: user._id,
+  createdBy: user.id,
   createdForName: user.firstName + ' ' + user.lastName,
   createdForEmail: user.email,
   subject: 'Senior Design 2018 Equipment Request',
@@ -142,7 +142,7 @@ ticket2 = {
 };
 
 ticket3 = {
-  createdBy: user._id,
+  createdBy: user.id,
   createdForName: user.firstName + ' ' + user.lastName,
   createdForEmail: user.email,
   subject: 'ME Lab Improvements',
@@ -157,3 +157,8 @@ ticket3 = {
 };
 
 db.tickets.insertMany([ticket1, ticket2, ticket3]);
+
+db.tickets.createIndex({
+  subject: "text",
+  details: "text"
+});
