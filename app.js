@@ -22,6 +22,7 @@ mongoose.connect(dbUrl);
 const loginController = require('./routes/login.controller');
 const usersController = require('./routes/users.controller');
 const unitsController = require('./routes/units.controller');
+const ticketsController = require('./routes/tickets.controller');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use(
 
 app.use('/api/users', usersController);
 app.use('/api/units', unitsController);
+app.use('/api/tickets', ticketsController);
 
 // Support for Angular's path location strategy -- request to any nonexistent
 // page will receive /public/index.html except for API calls.
