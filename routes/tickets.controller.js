@@ -21,7 +21,12 @@ router.post('/', (req, res, next) => {
             _id: data.unit // The unit in the request should just be the id.
         }
     }
-    new Ticket(ticket).save((err, ticket) => res.send(ticket));
+    new Ticket(ticket).save((err, ticket) => {
+        if (err) {
+            return res.status(500).json({message: "Mongo error"});
+        }
+        res.send(ticket);
+    });
 });
 
 module.exports = router;
